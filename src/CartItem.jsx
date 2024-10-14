@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 
-const CartItem = ({ onContinueShopping }) => {
+function CartItem({ onContinueShopping }) {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
@@ -59,7 +59,7 @@ const CartItem = ({ onContinueShopping }) => {
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
             <img className="cart-item-image" src={item.image} alt={item.name} />
-            <div className="cart-item-details">
+            <div className="cart-item-details">{item.description}
               <div className="cart-item-name">{item.name}</div>
               <div className="cart-item-cost">{item.cost}</div>
               <div className="cart-item-quantity">
@@ -75,7 +75,9 @@ const CartItem = ({ onContinueShopping }) => {
       </div>
       <div style={{ marginTop: '20px', color: 'black' }} className='total_cart_amount'></div>
       <div className="continue_shopping_btn">
-        <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
+      <button className="get-started-button" onClick={(e) => onContinueShopping(e)}>
+                Continue Shopping
+            </button>
         <br />
         <button className="get-started-button1">Checkout</button>
       </div>

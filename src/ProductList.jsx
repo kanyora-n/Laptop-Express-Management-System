@@ -223,7 +223,7 @@ function ProductList() {
     padding: '15px',
     display: 'flex',
     justifyContent: 'space-between',
-    alignIems: 'center',
+    alignItems: 'center',
     fontSize: '20px',
    }
    const styleObjUl={
@@ -256,6 +256,7 @@ const handlePlantsClick = (e) => {
 
 const handleContinueShopping = (e) => {
     e.preventDefault();
+    setShowPlants(true);
     setShowCart(false); // Hide the cart view and continue shopping
 };
   return (
@@ -275,6 +276,7 @@ const handleContinueShopping = (e) => {
             <div style={styleObjUl}>
                 <div>
                 <a href="#" onClick={handlePlantsClick} style={styleA}>Plants</a>
+                <a href="#" onClick={handleContinueShopping} style={styleA}>Plants</a>
                 </div>
                 <div>
                     <a href="#" onClick={handleCartClick} style={styleA}>
@@ -315,6 +317,7 @@ const handleContinueShopping = (e) => {
         ) : showCart ? (
             <CartItem onContinueShopping={handleContinueShopping} />
         ) : null}
+        
     </div>
 );
 }

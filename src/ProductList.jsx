@@ -1,13 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
-import { useDispatch } from 'react-redux'; // Import useDispatch from react-redux
+import { useDispatch, useSelector } from 'react-redux'; 
 import { addItem } from './CartSlice'; // Import addItem action from CartSlice.jsx
 
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(true); // State to control the visibility of the About Us page
-    const [addedToCart, setAddedToCart] = useState({}); // State to track added products
     const dispatch = useDispatch(); // Initialize useDispatch for adding items to cart
     const totalQuantity = useSelector((state) => state.cart.totalQuantity); // Get total quantity from Redux store
 
